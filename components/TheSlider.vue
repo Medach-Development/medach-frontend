@@ -1,10 +1,10 @@
 <template lang="pug">
 .wrapper.desctop(v-if="showCarousel")
   .inner
-    .opacity
     carousel.slider(
       :perPage="1"
     )
+      .opacity
       slide.slide(
         v-for="(slide, index) in slides",
         :key="slide.id",
@@ -103,10 +103,12 @@ export default {
 }
 
 .opacity {
-  opacity: 0.3;
+  opacity: 1;
   background: #5B5B5B;
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
+  width: 100%;
   left: 0;
   bottom: 0;
   right: 0;
@@ -142,7 +144,6 @@ export default {
 
 .slide-article__wrapper {
   padding: 100% 40px 84px 40px;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 .content {
   // max-width: 1200px;
