@@ -26,7 +26,7 @@
         .search-wrapper
           label
             form(@submit.prevent="search")
-              .search-icon
+              .search-icon(@click="search")
               input(type="text" class="search" name="search" autocomplete="off" placeholder = "поиск..." v-model="query")
           .search-buffer
   the-mobile-header(:menuHandler="menuHandler" :searchHandler="searchHandler" :isOpenMenu="isOpenMenu" :isOpenSearch="isOpenSearch")
@@ -34,7 +34,7 @@
 </template>
 
 <script>
- import TheMobileHeader from "~/components/TheMobileHeader"
+import TheMobileHeader from "~/components/TheMobileHeader"
 
 export default {
   name: 'TheHeader',
