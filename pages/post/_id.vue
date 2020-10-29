@@ -402,10 +402,7 @@ export default {
 
 .info-item.origin a {
   color: #9b9b9b;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  text-decoration: underline;
 }
 
 .contents-wrapper {
