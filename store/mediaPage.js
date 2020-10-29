@@ -40,7 +40,7 @@ export const actions = {
     
   },
 
-  fetchNextPage({commit, state}, {perPage, query}) {
+  fetchNextPage({commit, state}, {perPage, isSortByPopular, query}) {
     if (state.nextPage) {
       return getMedia(state.nextPage, perPage, isSortByPopular, query).then(data => {
         commit('updateArticles', { articles: data.collection, nextPage: data.meta.nextPage })
