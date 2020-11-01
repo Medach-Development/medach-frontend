@@ -39,7 +39,7 @@ export default {
 
 <style scoped lang="scss">
 .wrapper {
-  background: rgba(91,91,91,0.65);
+  background: rgba(91,91,91,0.8);
   height: 100%;
   padding: 40px 0;
 }
