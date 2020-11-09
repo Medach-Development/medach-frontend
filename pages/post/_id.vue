@@ -47,6 +47,9 @@
         GoogleAd(adSlot="2334561718" styles="display: block; height: 250px; width: 300px;")
     .report-error
       | Нашли опечатку? Выделите фрагмент и нажмите Ctrl+Enter.
+
+    .donation-form
+      iframe(src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20Medical%20Channel&targets-hint=&default-sum=10&button-text=14&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011557441721" width="100%" height="222" frameborder="0" allowtransparency="true" scrolling="no")
     preview(v-if="currentImg" :close="closeImg" :currentImg="currentImg")
 
   .interested-wrapper.container
@@ -585,6 +588,11 @@ export default {
   font-style: italic;
   color: #aaa;
   font-size: 15px;
+}
+
+.donation-form {
+  max-width: 422px;
+  margin-top: 30px;
 }
 </style>
 
