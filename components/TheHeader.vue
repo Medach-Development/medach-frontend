@@ -6,7 +6,7 @@ header.header
       .logo
         | MEDACH
     .right
-      nav.categories(:class="{visible: isOpen}")
+      nav.categories(:class="{visible: isOpen}" ref="categories")
         .category
           nuxt-link.category-name(to="/categories/cases") Кейсы
         .category
@@ -23,6 +23,7 @@ header.header
           nuxt-link.category-name(to="/categories/news") Новости
         .category
           nuxt-link.category-name(to="/vacancies") Вакансии
+        .caret(ref="caret")
         .search-wrapper
           label
             form(@submit.prevent="search")
@@ -47,6 +48,9 @@ export default {
       isOpenSearch: false
     }
   },
+  mounted() {
+    this.calcCaretPos()
+  },
   methods: {
     search() {
       this.$router.push(`/search?query=${this.query}`)
@@ -62,6 +66,24 @@ export default {
     overlayHandler() {
       this.isOpenMenu = false;
       this.isOpenSearch = false
+    },
+    async calcCaretPos() {
+      await this.$nextTick()
+      // const selected = this.checkedIndex
+      const { categories, caret } = this.$refs
+      
+      if (caret && categories) {
+        const currentLink = categories.querySelector('.nuxt-link-active')
+        const l = currentLink.offsetLeft
+        const w = currentLink.offsetWidth
+        console.log(l, w)
+        caret.style = `transform: translateX(${l}px); width: ${w}px;`
+      }
+    },
+  },
+  watch: {
+    $route: function () {
+      this.calcCaretPos()
     }
   }
 }
@@ -95,18 +117,17 @@ export default {
 
   .nuxt-link-active {
     color: #7198BA;
-
-    &::after {
-      content: '';
-      height: 2px;
-      width: calc(100% - 40px);
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      background: #7198BA;
-      transform: translateX(-50%);
-    }
   }
+}
+
+.caret {
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  background: #7198BA;
+  left: 0;
+  transition: transform 0.2s ease, width 0.2s ease;
+  will-change: width, transform;
 }
 
 .logo {
@@ -129,12 +150,18 @@ export default {
   margin-right: 16px;
 }
 
+.category {
+  &:not(:first-child) {
+    margin-left: 40px;
+  }
+}
+
 .category-name {
   font-size: 16px;
   color: #5B5B5B;
   letter-spacing: 0;
   text-decoration: none;
-  padding: 25px 20px;
+  padding: 25px 0;
   display: inline-block;
   transition: color .2s ease;
   position: relative;
@@ -146,7 +173,7 @@ export default {
 
 .search-wrapper {
   position: relative;
-  margin-left: 20px;
+  margin-left: 40px;
   max-width: 200px;
 }
 
