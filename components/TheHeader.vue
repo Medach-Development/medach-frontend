@@ -69,14 +69,14 @@ export default {
     },
     async calcCaretPos() {
       await this.$nextTick()
-      // const selected = this.checkedIndex
       const { categories, caret } = this.$refs
-      
-      if (caret && categories) {
-        const currentLink = categories.querySelector('.nuxt-link-active')
+      const currentLink = categories.querySelector('.nuxt-link-active')
+      if (caret && currentLink) {
         const l = currentLink.offsetLeft
         const w = currentLink.offsetWidth
         caret.style = `transform: translateX(${l}px); width: ${w}px;`
+      } else {
+        caret.style = 'display: none;'
       }
     },
   },
