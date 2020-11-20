@@ -76,7 +76,6 @@ export default {
         const currentLink = categories.querySelector('.nuxt-link-active')
         const l = currentLink.offsetLeft
         const w = currentLink.offsetWidth
-        console.log(l, w)
         caret.style = `transform: translateX(${l}px); width: ${w}px;`
       }
     },
