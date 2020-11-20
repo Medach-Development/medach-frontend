@@ -1,12 +1,12 @@
 <template lang="pug">
-.header
+header.header
   .container.container-desctop
     nuxt-link.left(to="/")
       .logo-icon
       .logo
         | MEDACH
     .right
-      .categories(:class="{visible: isOpen}")
+      nav.categories(:class="{visible: isOpen}")
         .category
           nuxt-link.category-name(to="/categories/cases") Кейсы
         .category

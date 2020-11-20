@@ -1,14 +1,14 @@
 <template lang="pug">
-.wrapper
+article.wrapper
   .slider-section
-    .slider-wrapper
+    section.slider-wrapper
       the-slider(:slides="slides")
       the-mobile-slider(:slides="slides")
-    .news-wrapper
+    aside.news-wrapper
       the-hot-news(:news="news")
 
   .container
-    .top-articles
+    section.top-articles
       nuxt-link.article(
         v-for="article in topPosts"
         :to="`post/${article.id}`"
@@ -25,10 +25,10 @@
           .name
             | {{article.title}}
 
-    .blogs-section
+    section.blogs-section
       the-blogs(:articles="blogs")
 
-    .middle-articles
+    section.middle-articles
       .article-wrapper(v-for="article in middlePosts" :key="article.id")
         media-card(
           :name="article.title"
@@ -37,7 +37,7 @@
           :id="article.id"
         )
 
-    .promoted-articles
+    section.promoted-articles
       .promoted-article(v-for="article in promotedPosts" :key="article.id")
         article-card(
           :name="article.title"

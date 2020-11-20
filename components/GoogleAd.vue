@@ -49,11 +49,11 @@ export default {
       }
     },
   },
-  mounted() {
-    if (this.$route.params.id !== '2347') {
-      this.renderWidget()
-    }
-  },
+  // mounted() {
+  //   if (this.$route.params.id !== '2347') {
+  //     this.renderWidget()
+  //   }
+  // },
   beforeDestroy() {
     this.$refs.slot.innerHTML = ''
   }

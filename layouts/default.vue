@@ -1,7 +1,8 @@
 <template lang="pug">
   .wrapper.wrapper-layout
     the-header
-    nuxt
+    main
+      nuxt
     the-footer
 </template>
 
@@ -100,6 +101,11 @@ html {
 a {
 	text-decoration: none;
 	color: inherit;
+}
+
+h1 {
+  font-weight: inherit;
+  margin: 0;
 }
 
 .content-article-wrapper {

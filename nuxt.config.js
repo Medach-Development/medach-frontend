@@ -92,11 +92,6 @@ module.exports = {
         trackLinks:true,
         accurateTrackBounce:true,
       }
-    ],
-
-    ['@nuxtjs/google-adsense', {
-      id: 'ca-pub-9039390016962020',
-      pageLevelAds: false,
-    }]
+    ]
   ]
 }

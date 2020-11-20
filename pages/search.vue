@@ -11,7 +11,7 @@
           .icon.icon-list(v-else)
     .title(v-if="articles.length === 0 || !articles")
       | Ничего не найдено :(
-    .articles-view
+    section.articles-view
       list-articles-view(v-if="isList" :articles="articles" key="list-view")
       grid-articles-view(v-else :articles="articles" key="grid-view")
 

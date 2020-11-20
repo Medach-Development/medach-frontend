@@ -1,6 +1,6 @@
 <template lang="pug">
   nuxt-link.card-wrapper(:to="`/post/${id}`")
-    .content
+    article.content
       .content-title
         | {{ name }}
       .content-description

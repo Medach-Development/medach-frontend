@@ -1,7 +1,7 @@
 <template lang="pug">
 .wrapper-1
   .list
-    .card-wrapper(v-for="blogger in bloggers" :key="blogger.id")
+    section.card-wrapper(v-for="blogger in bloggers" :key="blogger.id")
       the-blogger-card(:profile="blogger")
 
   .load-more-wrapper

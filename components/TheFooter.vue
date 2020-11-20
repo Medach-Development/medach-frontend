@@ -1,5 +1,5 @@
 <template lang="pug">
-.footer
+footer.footer
   .container
     .left
       .footer-item

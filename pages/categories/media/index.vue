@@ -5,7 +5,7 @@
     .buttons
       nuxt-link.button-wrapper(:to="`/categories/media/подкасты`")
         .flag
-          span
+          h2
             | Подкасты
         .content
           .icon
@@ -14,7 +14,7 @@
             | Слушайте наши подкасты на SoundCloud
       nuxt-link.button-wrapper(:to="`/categories/media/инфографика`")
         .flag
-          span
+          h2
             | Инфографика
         .content
           .icon
@@ -23,7 +23,7 @@
             | Сложные схемы простым языком
       nuxt-link.button-wrapper(:to="`/categories/media/видео`")
         .flag
-          span
+          h2
             | Видеоматериалы
         .content
           .icon
@@ -210,7 +210,7 @@ export default {
 
   }
 
-  span {
+  h2 {
     z-index: 10;
     display: flex;
     align-items: center;
