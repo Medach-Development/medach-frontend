@@ -1,9 +1,8 @@
 <template lang="pug">
 .wrapper(:class="{'is-contents': contents.length !== 0 || leftBanners.length !== 0}" )
-  the-header
   scroll-top
-  .container.article-container
-    .title
+  article.container.article-container
+    h1.title
       | {{article.title}}
     .tags
       nuxt-link.tag(v-for="tag in article.tags" :key="`${article.id}-${tag}`" :to="`/search?query=${tag}`")
@@ -41,10 +40,10 @@
     .article-wrapper
       .article.content-article-wrapper(v-html="articleBody" ref="articleData")
 
-      .promo.desktop
-        GoogleAd(adSlot="2334561718" styles="display: block; min-height: 600px; max-width: 300px; width: 100%;")
-      .promo.mobile
-        GoogleAd(adSlot="2334561718" styles="display: block; height: 250px; width: 300px;")
+      //- .promo.desktop
+      //-   GoogleAd(adSlot="2334561718" styles="display: block; min-height: 600px; max-width: 300px; width: 100%;")
+      //- .promo.mobile
+      //-   GoogleAd(adSlot="2334561718" styles="display: block; height: 250px; width: 300px;")
     .report-error
       | Нашли опечатку? Выделите фрагмент и нажмите Ctrl+Enter.
 
@@ -76,9 +75,7 @@ import InterestedArticles from "~/components/InterestedArticles";
 import ImageComponent from "~/components/ImageComponent";
 import ThePopularAuthors from "~/components/ThePopularAuthors";
 import Preview from "~/components/Preview";
-import TheHeader from "~/components/TheHeader";
 import ScrollTop from "~/components/ScrollTop";
-import GoogleAd from "~/components/GoogleAd";
 import TheArticleContents from "~/components/TheArticleContents";
 import Popup from "~/components/popups/Popup";
 
@@ -93,9 +90,7 @@ export default {
     ImageComponent,
     ThePopularAuthors,
     Preview,
-    TheHeader,
     ScrollTop,
-    GoogleAd,
     TheArticleContents,
     Popup
   },

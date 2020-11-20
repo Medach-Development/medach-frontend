@@ -1,9 +1,8 @@
 <template lang="pug">
-.wrapper
-  the-header
+article.wrapper
   .profile-img(:style="{background: `url(${BASE_URL}${profile.user_profile ? profile.user_profile.cover_image.url : ''}) no-repeat center / cover`}")
 
-  .container
+  section.container
     .profile-info
       .avatar(:style="{background: `url(${BASE_URL}${profile.user_profile ? profile.user_profile.avatar.url : ''}) no-repeat center/contain`} ")
       .info
@@ -19,7 +18,7 @@
     .autor-articles
       | Статьи Автора
 
-  .container.row
+  section.container.row
     .articles
       .heading
         .top
@@ -39,9 +38,9 @@
       .articles-view
         profile-list-articles-view(v-if="isList" :articles="articles" :profile="profile" key="list-view")
         grid-articles-view(v-else :articles="articles" key="grid-view")
-        .no-articles(v-if="articles.length === 0") Здесь ещё ничего нет, но вы можете найти много крутых штук на
+        .no-articles(v-if="articles.length === 0") Здесь ещё ничего нет, но вы можете вернуться на &nbsp;
           nuxt-link(to="/")
-            | главной
+            | главную страницу
 
     .promo-wrapper
 
@@ -68,7 +67,6 @@ import ProfileListArticlesView from '~/components/ProfileListArticlesView'
 import GridArticlesView from '~/components/GridArticlesView'
 import InterestedArticles from '~/components/InterestedArticles'
 import ThePopularAuthors from '~/components/ThePopularAuthors'
-import TheHeader from '~/components/TheHeader'
 
 import { mapGetters } from 'vuex'
 
@@ -78,7 +76,6 @@ export default {
     GridArticlesView,
     InterestedArticles,
     ThePopularAuthors,
-    TheHeader
   },
   fetch({store, params}) {
     return store.dispatch('profilePage/fetchProfile', {
