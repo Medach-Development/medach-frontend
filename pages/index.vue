@@ -1,6 +1,5 @@
 <template lang="pug">
 .wrapper
-  the-header
   .slider-section
     .slider-wrapper
       the-slider(:slides="slides")

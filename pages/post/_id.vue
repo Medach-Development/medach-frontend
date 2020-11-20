@@ -1,6 +1,5 @@
 <template lang="pug">
 .wrapper(:class="{'is-contents': contents.length !== 0 || leftBanners.length !== 0}" )
-  the-header
   scroll-top
   .container.article-container
     .title
@@ -76,7 +75,6 @@ import InterestedArticles from "~/components/InterestedArticles";
 import ImageComponent from "~/components/ImageComponent";
 import ThePopularAuthors from "~/components/ThePopularAuthors";
 import Preview from "~/components/Preview";
-import TheHeader from "~/components/TheHeader";
 import ScrollTop from "~/components/ScrollTop";
 import GoogleAd from "~/components/GoogleAd";
 import TheArticleContents from "~/components/TheArticleContents";
@@ -93,7 +91,6 @@ export default {
     ImageComponent,
     ThePopularAuthors,
     Preview,
-    TheHeader,
     ScrollTop,
     GoogleAd,
     TheArticleContents,

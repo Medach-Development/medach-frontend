@@ -1,6 +1,5 @@
 <template lang="pug">
 .wrapper-1
-  the-header
   .list
     .card-wrapper(v-for="blogger in bloggers" :key="blogger.id")
       the-blogger-card(:profile="blogger")
@@ -15,7 +14,6 @@ const BLOGGERS_PER_PAGE = 10
 
 import InterestedArticles from '~/components/InterestedArticles'
 import ThePopularAuthors from '~/components/ThePopularAuthors'
-import TheHeader from '~/components/TheHeader'
 import TheBloggerCard from '~/components/TheBloggerCard'
 
 import { mapGetters } from 'vuex'
@@ -24,7 +22,6 @@ export default {
   components: {
     InterestedArticles,
     ThePopularAuthors,
-    TheHeader,
     TheBloggerCard
   },
   fetch({store}) {

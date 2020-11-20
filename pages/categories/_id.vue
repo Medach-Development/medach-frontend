@@ -1,6 +1,5 @@
 <template lang="pug">
 .wrapper
-  the-header
   scroll-top
   .container.row
     .articles
@@ -47,7 +46,6 @@ import ListArticlesView from '~/components/ListArticlesView'
 import GridArticlesView from '~/components/GridArticlesView'
 import InterestedArticles from '~/components/InterestedArticles'
 import ThePopularAuthors from '~/components/ThePopularAuthors'
-import TheHeader from '~/components/TheHeader'
 import ScrollTop from '~/components/ScrollTop'
 import GoogleAd from '~/components/GoogleAd'
 
@@ -59,7 +57,6 @@ export default {
     GridArticlesView,
     InterestedArticles,
     ThePopularAuthors,
-    TheHeader,
     ScrollTop,
     GoogleAd,
   },

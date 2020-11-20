@@ -1,6 +1,5 @@
 <template lang="pug">
 .wrapper
-  the-header
   .profile-img(:style="{background: `url(${BASE_URL}${profile.user_profile ? profile.user_profile.cover_image.url : ''}) no-repeat center / cover`}")
 
   .container
@@ -68,7 +67,6 @@ import ProfileListArticlesView from '~/components/ProfileListArticlesView'
 import GridArticlesView from '~/components/GridArticlesView'
 import InterestedArticles from '~/components/InterestedArticles'
 import ThePopularAuthors from '~/components/ThePopularAuthors'
-import TheHeader from '~/components/TheHeader'
 
 import { mapGetters } from 'vuex'
 
@@ -78,7 +76,6 @@ export default {
     GridArticlesView,
     InterestedArticles,
     ThePopularAuthors,
-    TheHeader
   },
   fetch({store, params}) {
     return store.dispatch('profilePage/fetchProfile', {
