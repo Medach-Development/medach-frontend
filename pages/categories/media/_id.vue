@@ -57,8 +57,6 @@
             | главной
 
     .promo-wrapper
-      //- GoogleAd(adSlot="2334561718" styles="display: block; min-height: 1050px;")
-
 
   .load-more-wrapper
     .load-more(v-if="nextPage" @click="getNextPage")
