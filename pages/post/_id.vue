@@ -78,6 +78,7 @@ import Preview from "~/components/Preview";
 import ScrollTop from "~/components/ScrollTop";
 import TheArticleContents from "~/components/TheArticleContents";
 import Popup from "~/components/popups/Popup";
+import { parse } from 'node-html-parser';
 
 import { get, maxBy } from "lodash";
 import { mapGetters } from "vuex";
@@ -122,8 +123,13 @@ export default {
       htmlAttrs: {
         prefix: "og: http://ogp.me/ns#"
       },
-      title: this.article.title,
+      title: this.article.title, 
       meta: [
+        {
+          hid: "description",
+          property: 'description',
+          content: this.getDescription(),
+        },
         {
           hid: "ogtitle",
           property: "og:title",
@@ -241,6 +247,10 @@ export default {
   },
 
   methods: {
+    getDescription() {
+      const contentHTML = parse(this.article.body)
+      return contentHTML.text.split('.').filter((_, i) => i < 4).join('.')
+    },
     insertAd(content, adHtml) {
       const tagsForSplitting = ["</div>", "</p>", "<br>"];
       const splittedContent = tagsForSplitting.map(tag => ({
