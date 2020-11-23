@@ -1,6 +1,5 @@
 <template lang="pug">
 .wrapper
-  the-header
   scroll-top
   .container.row
     .articles
@@ -22,13 +21,12 @@
       .articles-view
         list-articles-view(v-if="isList" :articles="articles" key="list-view")
         grid-articles-view(v-else :articles="articles" key="grid-view")
-        .no-articles(v-if="articles.length === 0") Здесь ещё ничего нет, но вы можете найти много крутых штук на
+        .no-articles(v-if="articles.length === 0") Здесь ещё ничего нет, но вы можете вернуться на&nbsp;
           nuxt-link(to="/")
-            | главной
+            | главную страницу
 
-    .promo-wrapper
+    aside.promo-wrapper
       the-popular-authors(v-if="popularArticles.length > 0" :articles="popularArticles")
-      //- GoogleAd(adSlot="2334561718" styles="display: block; min-height: 1050px;")
 
   .load-more-wrapper
     .load-more(v-if="nextPage" @click="getNextPage")
@@ -47,9 +45,7 @@ import ListArticlesView from '~/components/ListArticlesView'
 import GridArticlesView from '~/components/GridArticlesView'
 import InterestedArticles from '~/components/InterestedArticles'
 import ThePopularAuthors from '~/components/ThePopularAuthors'
-import TheHeader from '~/components/TheHeader'
 import ScrollTop from '~/components/ScrollTop'
-import GoogleAd from '~/components/GoogleAd'
 
 import { mapGetters } from 'vuex'
 
@@ -59,9 +55,7 @@ export default {
     GridArticlesView,
     InterestedArticles,
     ThePopularAuthors,
-    TheHeader,
     ScrollTop,
-    GoogleAd,
   },
   fetch({store, params}) {
     return store.dispatch('categoryPage/fetchCategory', {

@@ -1,12 +1,11 @@
 <template lang="pug">
 .wrapper
-  the-header
   scroll-top
   .container
     .buttons
       nuxt-link.button-wrapper(:to="`/categories/media/подкасты`")
         .flag
-          span
+          h2
             | Подкасты
         .content
           .icon
@@ -15,7 +14,7 @@
             | Слушайте наши подкасты на SoundCloud
       nuxt-link.button-wrapper(:to="`/categories/media/инфографика`")
         .flag
-          span
+          h2
             | Инфографика
         .content
           .icon
@@ -24,7 +23,7 @@
             | Сложные схемы простым языком
       nuxt-link.button-wrapper(:to="`/categories/media/видео`")
         .flag
-          span
+          h2
             | Видеоматериалы
         .content
           .icon
@@ -55,7 +54,6 @@ const PER_PAGE = 12
 
 import MediaCard from '~/components/cards/MediaCard'
 import interestedArticles from '~/components/InterestedArticles'
-import TheHeader from '~/components/TheHeader'
 import ScrollTop from '~/components/ScrollTop'
 
 import { mapGetters } from 'vuex'
@@ -64,7 +62,6 @@ export default {
   components: {
     MediaCard,
     interestedArticles,
-    TheHeader,
     ScrollTop
   },
 
@@ -213,7 +210,7 @@ export default {
 
   }
 
-  span {
+  h2 {
     z-index: 10;
     display: flex;
     align-items: center;

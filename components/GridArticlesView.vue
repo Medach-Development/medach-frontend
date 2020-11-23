@@ -1,5 +1,5 @@
 <template lang="pug">
-.articles-wrapper(v-if="articles.length > 0")
+section.articles-wrapper(v-if="articles.length > 0")
   .article-wrapper(v-for="article in articles" :key="article.id")
     article-card(
       :name="article.title"

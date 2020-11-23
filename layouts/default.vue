@@ -1,16 +1,20 @@
 <template lang="pug">
   .wrapper.wrapper-layout
-    nuxt
+    the-header
+    main
+      nuxt
     the-footer
 </template>
 
 <script>
 import 'normalize.css'
 import TheFooter from '~/components/TheFooter'
+import TheHeader from '~/components/TheHeader'
 
 export default {
   components: {
-    TheFooter
+    TheFooter,
+    TheHeader,
   }
 }
 </script>
@@ -97,6 +101,11 @@ html {
 a {
 	text-decoration: none;
 	color: inherit;
+}
+
+h1 {
+  font-weight: inherit;
+  margin: 0;
 }
 
 .content-article-wrapper {

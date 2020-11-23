@@ -1,6 +1,5 @@
 <template lang="pug">
   .wrapper
-    the-header
     .container
       .breadcrumb
         ul
@@ -50,16 +49,11 @@
             | Откликнуться
 </template>
 <script>
-import TheHeader from '~/components/TheHeader'
 import { format } from 'date-fns';
 
 import { mapGetters } from 'vuex'
 
 export default {
-  components: {
-    TheHeader
-  },
-
   fetch({store, params}) {
     return store.dispatch('vacancyPage/getVacancy', {
       id: params.id

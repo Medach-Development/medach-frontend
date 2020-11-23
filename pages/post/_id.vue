@@ -1,9 +1,8 @@
 <template lang="pug">
 .wrapper(:class="{'is-contents': contents.length !== 0 || leftBanners.length !== 0}" )
-  the-header
   scroll-top
-  .container.article-container
-    .title
+  article.container.article-container
+    h1.title
       | {{article.title}}
     .tags
       nuxt-link.tag(v-for="tag in article.tags" :key="`${article.id}-${tag}`" :to="`/search?query=${tag}`")
@@ -41,10 +40,10 @@
     .article-wrapper
       .article.content-article-wrapper(v-html="articleBody" ref="articleData")
 
-      .promo.desktop
-        GoogleAd(adSlot="2334561718" styles="display: block; min-height: 600px; max-width: 300px; width: 100%;")
-      .promo.mobile
-        GoogleAd(adSlot="2334561718" styles="display: block; height: 250px; width: 300px;")
+      //- .promo.desktop
+      //-   GoogleAd(adSlot="2334561718" styles="display: block; min-height: 600px; max-width: 300px; width: 100%;")
+      //- .promo.mobile
+      //-   GoogleAd(adSlot="2334561718" styles="display: block; height: 250px; width: 300px;")
     .report-error
       | Нашли опечатку? Выделите фрагмент и нажмите Ctrl+Enter.
 
@@ -76,11 +75,10 @@ import InterestedArticles from "~/components/InterestedArticles";
 import ImageComponent from "~/components/ImageComponent";
 import ThePopularAuthors from "~/components/ThePopularAuthors";
 import Preview from "~/components/Preview";
-import TheHeader from "~/components/TheHeader";
 import ScrollTop from "~/components/ScrollTop";
-import GoogleAd from "~/components/GoogleAd";
 import TheArticleContents from "~/components/TheArticleContents";
 import Popup from "~/components/popups/Popup";
+import { parse } from 'node-html-parser';
 
 import { get, maxBy } from "lodash";
 import { mapGetters } from "vuex";
@@ -93,9 +91,7 @@ export default {
     ImageComponent,
     ThePopularAuthors,
     Preview,
-    TheHeader,
     ScrollTop,
-    GoogleAd,
     TheArticleContents,
     Popup
   },
@@ -127,8 +123,13 @@ export default {
       htmlAttrs: {
         prefix: "og: http://ogp.me/ns#"
       },
-      title: this.article.title,
+      title: this.article.title, 
       meta: [
+        {
+          hid: "description",
+          property: 'description',
+          content: this.getDescription(),
+        },
         {
           hid: "ogtitle",
           property: "og:title",
@@ -246,6 +247,10 @@ export default {
   },
 
   methods: {
+    getDescription() {
+      const contentHTML = parse(this.article.body)
+      return contentHTML.text.split('.').filter((_, i) => i < 4).join('.')
+    },
     insertAd(content, adHtml) {
       const tagsForSplitting = ["</div>", "</p>", "<br>"];
       const splittedContent = tagsForSplitting.map(tag => ({

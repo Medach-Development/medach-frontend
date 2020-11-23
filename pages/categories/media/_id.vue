@@ -1,12 +1,11 @@
 <template lang="pug">
 .wrapper
-  the-header
   scroll-top
   .container
     .buttons
       nuxt-link.button-wrapper(:to="`/categories/media/подкасты`")
         .flag
-          span
+          h2
             | Подкасты
         .content
           .button-icon
@@ -15,7 +14,7 @@
             | Слушайте наши подкасты на SoundCloud
       nuxt-link.button-wrapper(:to="`/categories/media/инфографика`")
         .flag
-          span
+          h2
             | Инфографика
         .content
           .button-icon
@@ -24,7 +23,7 @@
             | Сложные схемы простым языком
       nuxt-link.button-wrapper(:to="`/categories/media/видеоматериалы`")
         .flag
-          span
+          h2
             | Видеоматериалы
         .content
           .button-icon
@@ -52,9 +51,9 @@
       .articles-view
         list-articles-view(v-if="isList" :articles="articles" key="list-view")
         grid-articles-view(v-else :articles="articles" key="grid-view")
-        .no-articles(v-if="articles.length === 0") Здесь ещё ничего нет, но вы можете найти много крутых штук на
+        .no-articles(v-if="articles.length === 0") Здесь ещё ничего нет, но вы можете вернуться на&nbsp;
           nuxt-link(to="/")
-            | главной
+            | главную страницу
 
     .promo-wrapper
 
@@ -79,10 +78,7 @@ import ListArticlesView from '~/components/ListArticlesView'
 import GridArticlesView from '~/components/GridArticlesView'
 import InterestedArticles from '~/components/InterestedArticles'
 import ThePopularAuthors from '~/components/ThePopularAuthors'
-import TheHeader from '~/components/TheHeader'
 import ScrollTop from '~/components/ScrollTop'
-
-import GoogleAd from '~/components/GoogleAd'
 
 import { mapGetters } from 'vuex'
 
@@ -92,9 +88,7 @@ export default {
     GridArticlesView,
     InterestedArticles,
     ThePopularAuthors,
-    TheHeader,
     ScrollTop,
-    GoogleAd,
   },
   fetch({store, params}) {
     return store.dispatch('mediaPage/fetchMedia', {
@@ -410,7 +404,7 @@ export default {
 
   }
 
-  span {
+  h2 {
     z-index: 10;
     display: flex;
     align-items: center;

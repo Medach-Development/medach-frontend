@@ -1,6 +1,5 @@
 <template lang="pug">
   .wrapper
-    the-header
     .container
       //- ThePostVacancy
       .content
@@ -37,7 +36,6 @@
 </template>
 
 <script>
-import TheHeader from '~/components/TheHeader'
 import TheVacancy from '~/components/TheVacancy'
 import TheButton from '~/components/TheButton'
 import Popup from '~/components/popups/Popup'
@@ -50,7 +48,6 @@ const VACANCIES_PER_PAGE = 10
 
 export default {
   components: {
-    TheHeader,
     TheVacancy,
     TheButton,
     Popup,

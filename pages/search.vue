@@ -1,6 +1,5 @@
 <template lang="pug">
 .wrapper
-  the-header
   scroll-top
   .container
     .title
@@ -12,7 +11,7 @@
           .icon.icon-list(v-else)
     .title(v-if="articles.length === 0 || !articles")
       | Ничего не найдено :(
-    .articles-view
+    section.articles-view
       list-articles-view(v-if="isList" :articles="articles" key="list-view")
       grid-articles-view(v-else :articles="articles" key="grid-view")
 
@@ -32,7 +31,6 @@ import ListArticlesView from '~/components/ListArticlesView'
 import GridArticlesView from '~/components/GridArticlesView'
 import InterestedArticles from '~/components/InterestedArticles'
 import ThePopularAuthors from '~/components/ThePopularAuthors'
-import TheHeader from '~/components/TheHeader'
 import ScrollTop from '~/components/ScrollTop'
 
 import { mapGetters } from 'vuex'
@@ -43,7 +41,6 @@ export default {
     GridArticlesView,
     InterestedArticles,
     ThePopularAuthors,
-    TheHeader,
     ScrollTop
   },
 

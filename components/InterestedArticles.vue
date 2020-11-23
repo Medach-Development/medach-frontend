@@ -3,7 +3,7 @@
   .title
     | Вам может быть интересно
 
-  .inner
+  aside.inner
     .article-wrapper(v-for="article in articles" :key="article.id")
       article-card(
         :name="article.title"

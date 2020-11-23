@@ -5,7 +5,7 @@
     ref="contents"
     v-if="isBrowser && (contents.length > 0 || bannersLeft.length > 0)"
     )
-    .ul-content__wrapper(:class="{ 'hide-wrap': !contents.length}")
+    nav.ul-content__wrapper(:class="{ 'hide-wrap': !contents.length}")
       ul
         li(v-for="(content, index) in contents" @click="scrollTo(content)" :class="getClass(content, index)")
           | {{ content.textContent }}
