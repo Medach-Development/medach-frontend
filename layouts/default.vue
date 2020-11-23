@@ -22,50 +22,50 @@ export default {
 <style lang="scss">
 @font-face {
 	font-family: 'Montserrat';
-	src: url('~/assets/fonts/Montserrat-Bold.eot');
-	src: url('~/assets/fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
-		url('~/assets/fonts/Montserrat-Bold.woff') format('woff'),
-		url('~/assets/fonts/Montserrat-Bold.ttf') format('truetype');
+	src: url('~assets/fonts/Montserrat-Bold.eot');
+	src: url('~assets/fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/Montserrat-Bold.woff') format('woff'),
+		url('~assets/fonts/Montserrat-Bold.ttf') format('truetype');
 	font-weight: 700;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Montserrat';
-	src: url('~/assets/fonts/Montserrat-Medium.eot');
-	src: url('~/assets/fonts/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
-		url('~/assets/fonts/Montserrat-Medium.woff') format('woff'),
-		url('~/assets/fonts/Montserrat-Medium.ttf') format('truetype');
+	src: url('~assets/fonts/Montserrat-Medium.eot');
+	src: url('~assets/fonts/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/Montserrat-Medium.woff') format('woff'),
+		url('~assets/fonts/Montserrat-Medium.ttf') format('truetype');
 	font-weight: 500;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Montserrat';
-	src: url('~/assets/fonts/Montserrat-Regular.eot');
-	src: url('~/assets/fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
-		url('~/assets/fonts/Montserrat-Regular.woff') format('woff'),
-		url('~/assets/fonts/Montserrat-Regular.ttf') format('truetype');
+	src: url('~assets/fonts/Montserrat-Regular.eot');
+	src: url('~assets/fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/Montserrat-Regular.woff') format('woff'),
+		url('~assets/fonts/Montserrat-Regular.ttf') format('truetype');
 	font-weight: 400;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Montserrat';
-	src: url('~/assets/fonts/Montserrat-SemiBold.eot');
-	src: url('~/assets/fonts/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
-		url('~/assets/fonts/Montserrat-SemiBold.woff') format('woff'),
-		url('~/assets/fonts/Montserrat-SemiBold.ttf') format('truetype');
+	src: url('~assets/fonts/Montserrat-SemiBold.eot');
+	src: url('~assets/fonts/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/Montserrat-SemiBold.woff') format('woff'),
+		url('~assets/fonts/Montserrat-SemiBold.ttf') format('truetype');
 	font-weight: 600;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'PTSerif';
-	src: url('~/assets/fonts/PTSerif-Regular.eot');
-	src: url('~/assets/fonts/PTSerif-Regular.eot?#iefix') format('embedded-opentype'),
-		url('~/assets/fonts/PTSerif-Regular.woff') format('woff'),
-		url('~/assets/fonts/PTSerif-Regular.ttf') format('truetype');
+	src: url('~assets/fonts/PTSerif-Regular.eot');
+	src: url('~assets/fonts/PTSerif-Regular.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/PTSerif-Regular.woff') format('woff'),
+		url('~assets/fonts/PTSerif-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }

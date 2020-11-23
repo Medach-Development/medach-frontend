@@ -143,7 +143,7 @@ export default {
 }
 
 .logo-icon {
-  background: url('~/assets/images/logo.svg') no-repeat center / contain;
+  background: url('~assets/images/logo.svg') no-repeat center / contain;
   width: 36px;
   height: 36px;
   margin-right: 16px;
@@ -194,7 +194,7 @@ export default {
 .search-icon {
   width: 16px;
   height: 16px;
-  background: url('~/assets/images/search.svg') no-repeat center / contain;
+  background: url('~assets/images/search.svg') no-repeat center / contain;
   position: absolute;
   right: 10px;
   top: 50%;

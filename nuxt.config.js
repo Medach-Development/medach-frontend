@@ -1,3 +1,4 @@
+const path = require('path')
 module.exports = {
   /*
   ** Headers of the page
@@ -40,6 +41,7 @@ module.exports = {
     ** Run ESLint on save
     */
     extend (config, { isDev, isClient }) {
+      // config.resolve.alias['~'] = path.join(__dirname, '/')
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -48,6 +50,11 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+
+    filenames: {
+      img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[name].[ext]',
+      font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[name].[ext]',
     }
   },
   plugins: [

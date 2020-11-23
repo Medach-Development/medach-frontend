@@ -100,7 +100,7 @@
     width: 14px;
     height: 16px;
 
-    background: url('~/assets/images/search-arrow.svg') no-repeat center/contain;
+    background: url('~assets/images/search-arrow.svg') no-repeat center/contain;
   }
 
   .search input {
@@ -173,12 +173,12 @@
   .search-icon {
     width: 16px;
     height: 16px;
-    background: url('~/assets/images/search.svg') no-repeat center / contain;
+    background: url('~assets/images/search.svg') no-repeat center / contain;
     cursor: pointer;
   }
 
   .search-icon.active {
-    background: url('~/assets/images/close.svg') no-repeat center / contain;
+    background: url('~assets/images/close.svg') no-repeat center / contain;
   }
 
 @media (max-width: 1200px) {
