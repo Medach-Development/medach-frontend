@@ -217,11 +217,11 @@ export default {
   height: 16px;
 
   &-grid {
-    background: url('~/assets/images/grid-icon.svg') no-repeat center / contain;
+    background: url('~assets/images/grid-icon.svg') no-repeat center / contain;
   }
 
   &-list {
-    background: url('~/assets/images/list-icon.svg') no-repeat center / contain;
+    background: url('~assets/images/list-icon.svg') no-repeat center / contain;
   }
 }
 
@@ -346,7 +346,7 @@ export default {
   width: 160px;
   height: 160px;
 
-  background: url('~/assets/images/profile.jpg') no-repeat center / cover;
+  background: url('~assets/images/profile.jpg') no-repeat center / cover;
   border: 4px solid #FFFFFF;
   border-radius: 50%;
 }
@@ -392,22 +392,22 @@ export default {
   cursor: pointer;
 
   &-youtube {
-    background: url('~/assets/images/youtube.svg') no-repeat center / contain;
+    background: url('~assets/images/youtube.svg') no-repeat center / contain;
   }
   &-vk {
-    background: url('~/assets/images/vk.svg') no-repeat center / contain;
+    background: url('~assets/images/vk.svg') no-repeat center / contain;
   }
   &-telegram {
-    background: url('~/assets/images/telegram.svg') no-repeat center / contain;
+    background: url('~assets/images/telegram.svg') no-repeat center / contain;
   }
   &-instagram {
-    background: url('~/assets/images/instagram.svg') no-repeat center / contain;
+    background: url('~assets/images/instagram.svg') no-repeat center / contain;
   }
   &-twitter {
-    background: url('~/assets/images/twitter.svg') no-repeat center / contain;
+    background: url('~assets/images/twitter.svg') no-repeat center / contain;
   }
   &-facebook {
-    background: url('~/assets/images/facebook.svg') no-repeat center / contain;
+    background: url('~assets/images/facebook.svg') no-repeat center / contain;
   }
 
   &:not(:first-child) {

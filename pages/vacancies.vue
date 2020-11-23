@@ -146,7 +146,7 @@ export default {
 
   width: 24px;
   height: 18px;
-  background: url('~/assets/images/email.svg') no-repeat center / contain;
+  background: url('~assets/images/email.svg') no-repeat center / contain;
 }
 
 .apply__button {

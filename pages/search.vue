@@ -115,11 +115,11 @@ export default {
   height: 16px;
 
   &-grid {
-    background: url('~/assets/images/grid-icon.svg') no-repeat center / contain;
+    background: url('~assets/images/grid-icon.svg') no-repeat center / contain;
   }
 
   &-list {
-    background: url('~/assets/images/list-icon.svg') no-repeat center / contain;
+    background: url('~assets/images/list-icon.svg') no-repeat center / contain;
   }
 }
 

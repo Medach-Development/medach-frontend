@@ -46,22 +46,22 @@ export default {
   cursor: pointer;
 
   &-youtube {
-    background: url('~/assets/images/youtube.svg') no-repeat center / contain;
+    background: url('~assets/images/youtube.svg') no-repeat center / contain;
   }
   &-vk {
-    background: url('~/assets/images/vk.svg') no-repeat center / contain;
+    background: url('~assets/images/vk.svg') no-repeat center / contain;
   }
   &-telegram {
-    background: url('~/assets/images/telegram.svg') no-repeat center / contain;
+    background: url('~assets/images/telegram.svg') no-repeat center / contain;
   }
   &-instagram {
-    background: url('~/assets/images/instagram.svg') no-repeat center / contain;
+    background: url('~assets/images/instagram.svg') no-repeat center / contain;
   }
   &-twitter {
-    background: url('~/assets/images/twitter.svg') no-repeat center / contain;
+    background: url('~assets/images/twitter.svg') no-repeat center / contain;
   }
   &-facebook {
-    background: url('~/assets/images/facebook.svg') no-repeat center / contain;
+    background: url('~assets/images/facebook.svg') no-repeat center / contain;
   }
 
   &:not(:first-child) {

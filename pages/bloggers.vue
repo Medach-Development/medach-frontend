@@ -96,7 +96,7 @@ export default {
 
 .profile-img {
   min-height: 320px;
-  background: url('~/assets/images/profile.jpg') no-repeat center / cover;
+  background: url('~assets/images/profile.jpg') no-repeat center / cover;
 }
 
 @media(max-width: 768px) {

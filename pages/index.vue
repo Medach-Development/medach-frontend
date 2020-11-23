@@ -299,7 +299,7 @@ export default {
     content: '';
     width: 24px;
     height: 19px;
-    background: url('~/assets/images/mail.svg') no-repeat center / contain;
+    background: url('~assets/images/mail.svg') no-repeat center / contain;
   }
 }
 
@@ -307,7 +307,7 @@ export default {
   width: 16px;
   height: 18px;
   cursor: pointer;
-  background: url('~/assets/images/send.svg') no-repeat center / contain;
+  background: url('~assets/images/send.svg') no-repeat center / contain;
 }
 
 

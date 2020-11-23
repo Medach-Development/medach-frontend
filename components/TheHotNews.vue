@@ -67,7 +67,7 @@ export default {
 .flag-icon {
   width: 36px;
   height: 29px;
-  background: url('~/assets/images/news-flag.svg') no-repeat center / contain;
+  background: url('~assets/images/news-flag.svg') no-repeat center / contain;
 }
 
 .inner {
