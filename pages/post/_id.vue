@@ -119,6 +119,7 @@ export default {
     };
   },
   head() {
+    const description = this.getDescription()
     return {
       htmlAttrs: {
         prefix: "og: http://ogp.me/ns#"
@@ -128,7 +129,7 @@ export default {
         {
           hid: "description",
           property: 'description',
-          content: this.getDescription(),
+          content: description,
         },
         {
           hid: "ogtitle",
@@ -170,7 +171,7 @@ export default {
         {
           hid: "ogdescription",
           property: "og:description",
-          content: this.article.title
+          content: description,
         }
       ]
     };
@@ -248,8 +249,9 @@ export default {
 
   methods: {
     getDescription() {
+      if (!this.article) return
       const contentHTML = parse(this.article.body)
-      return contentHTML.text.split('.').filter((_, i) => i < 4).join('.')
+      return contentHTML.text.split('.').filter((_, i) => i < 4).join('.').replace(/\r?\n|\r/g, "")
     },
     insertAd(content, adHtml) {
       const tagsForSplitting = ["</div>", "</p>", "<br>"];
