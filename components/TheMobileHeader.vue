@@ -53,7 +53,7 @@
     z-index: 100;
     background: #ffffff;
 
-    display: none;
+    display: none !important;
 
     padding-top: 9px;
     padding-bottom: 9px;
@@ -183,7 +183,7 @@
 
 @media (max-width: 1200px) {
   .container-mobile {
-    display: block;
+    display: block !important;
     padding-left: 16px;
     padding-right: 16px;
   }

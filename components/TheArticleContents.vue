@@ -1,22 +1,26 @@
 <template lang="pug">
+  //- v-if="isBrowser && (contents.length > 0 || bannersLeft.length > 0)"
   div(
     :class="{'contents': true, 'stycky': isSticky}"
     :style="{'top': `${stickyPosition}`}"
     ref="contents"
-    v-if="isBrowser && (contents.length > 0 || bannersLeft.length > 0)"
+    v-if="isBrowser"
     )
     nav.ul-content__wrapper(:class="{ 'hide-wrap': !contents.length}")
       ul
         li(v-for="(content, index) in contents" @click="scrollTo(content)" :class="getClass(content, index)")
           | {{ content.textContent }}
     .banners-wrapper__left-wrapper
-    .banners-wrapper__left
-      template(v-for = "banner in bannersLeft")
-        a.banner-wrapper(:href="banner.url" target="_blank") 
-          .banner-img(:style="{ background: `url(${BASE_URL}${banner.image.url}) no-repeat center / cover`}")
-          .banner-text
-            .banner-title {{banner.title}}
-            .banner-description {{banner.description}}
+      .banners-wrapper__left
+        //- template(v-for = "banner in bannersLeft")
+        //-   a.banner-wrapper(:href="banner.url" target="_blank") 
+        //-     .banner-img(:style="{ background: `url(${BASE_URL}${banner.image.url}) no-repeat center / cover`}")
+        //-     .banner-text
+        //-       .banner-title {{banner.title}}
+        //-       .banner-description {{banner.description}}
+
+        a.banner-wrapper(href="https://pcr.news/webinars/ippp/" target="_blank")
+          img.banner-img(src="~static/banner_1.jpg")
 
 </template>
 
@@ -136,7 +140,6 @@ export default {
   top: 88px;
 
   width: 320px;
-  min-height: 360px;
   max-height: calc(100vh - 108px);
   overflow-y: auto;
   border: 1px solid #dbdbdb;
@@ -266,7 +269,6 @@ export default {
 .banners-wrapper__left {
   display: flex;
   flex-direction: column;
-  position: absolute;
   width: 100%;
 }
 
@@ -282,7 +284,7 @@ export default {
 }
 
 .banner-wrapper::after {
-  content: "";
+  /* content: ""; */
   display: block;
   position: absolute;
   left: 0;
@@ -296,6 +298,7 @@ export default {
   width: 100%;
   min-height: 160px;
   border-radius: 4px;
+  padding: 0 5px;
 }
 .banner-text {
   width: 100%;

@@ -32,9 +32,9 @@
          | Публикация: {{publishDate}}
       .info-item(v-if="article.updatedAt")
         span
-         | Последнее обновление: {{updateDate}}
+         | Последнее обновление: {{updateDate}} 
 
-    .contents-wrapper(v-if="contents.length !== 0 || article.banners.length !== 0" :class="isContentsMenuOpen ? 'open' : null")
+    .contents-wrapper(:class="isContentsMenuOpen ? 'open' : null")
       button.toggle-contents(@click="toggleContents")
       TheArticleContents(:contents="contents")
     .article-wrapper
@@ -184,12 +184,12 @@ export default {
       bannersInText: "articlePage/inTextBanners",
     }),
     inTextBanners() {
-      let html = "<div class='in-text__banners'>";
-      this.bannersInText.forEach(elem => {
-        html =
-          html +
-          `<a href='${elem.url}' target="_blank" ><div class="banner-inText__wrapper" style="background: url(${this.BASE_URL}${elem.image.url}) no-repeat center / cover"><div class="banner-inText__text"><div class="banner-inText__title">${elem.title}</div><div class="banner-inText__description">${elem.description}</div></div></div></a>`;
-      });
+      let html = "<div class='in-text__banners'>" + `<a href="https://pcr.news/webinars/ippp/" target="_blank"><img class="disablePreview" src="/banner_2.jpg"/></a>`;
+      // this.bannersInText.forEach(elem => {
+      //   html =
+      //     html +
+      //     `<a href='${elem.url}' target="_blank" ><div class="banner-inText__wrapper" style="background: url(${this.BASE_URL}${elem.image.url}) no-repeat center / cover"><div class="banner-inText__text"><div class="banner-inText__title">${elem.title}</div><div class="banner-inText__description">${elem.description}</div></div></div></a>`;
+      // });
 
       return html + "</div>";
     },
@@ -226,7 +226,9 @@ export default {
   mounted() {
     const images = Array.from(this.$refs.articleData.querySelectorAll("img"));
     images.map(img => {
-      img.addEventListener("click", () => this.renderPreviewImage(img));
+      if (!img.classList.contains('disablePreview')) {
+        img.addEventListener("click", () => this.renderPreviewImage(img));
+      }
     });
 
     if (process.browser) {
