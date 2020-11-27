@@ -149,6 +149,11 @@ export default {
             : ""
         },
         {
+          hid: 'twittercard',
+          property: "twitter:card",
+          content: 'summary_large_image',
+        },
+        {
           hid: "ogimagetype",
           property: "og:image:type",
           content: "image/jpeg"
@@ -161,7 +166,7 @@ export default {
         {
           hid: "ogimageheight",
           property: "og:image:height",
-          content: "628"
+          content: "630"
         },
         {
           hid: "ogdescription",
