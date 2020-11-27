@@ -46,7 +46,7 @@
         button.toggle-contents(@click="toggleContents")
         TheArticleContents(:contents="contents")
 
-    .interested-wrapper.container
+    .interested-wrapper
       interested-articles(:articles="interested")
     transition(name="fade")
       popup(
@@ -130,6 +130,14 @@ export default {
           hid: "ogtitle",
           property: "og:title",
           content: this.article.title
+        },
+        {
+          property: 'og:image:width',
+          content: '1200',
+        },
+        {
+          property: 'og:image:height',
+          content: '620',
         },
         {
           hid: "ogurl",
@@ -330,10 +338,6 @@ export default {
 
 .wrapper {
   padding-bottom: 40px;
-
-  .container {
-    margin: 0 auto;
-  }
 }
 
 .is-contents .article-container {
@@ -515,10 +519,6 @@ export default {
     &::before {
       left: 16px;
     }
-  }
-
-  .is-contents .container {
-    padding-left: 80px;
   }
 }
 
