@@ -184,7 +184,7 @@ export default {
       bannersInText: "articlePage/inTextBanners",
     }),
     inTextBanners() {
-      let html = "<div class='in-text__banners'>" + `<a href="https://pcr.news/webinars/ippp/" target="_blank"><img class="disablePreview" src="/banner_2.jpg"/></a>`;
+      let html = "<div class='in-text__banners'>" + `<a href="https://pcr.news/webinars/ippp/" class="aImage" target="_blank"></a><img class="disablePreview" src="/banner_2.jpg"/>`;
       // this.bannersInText.forEach(elem => {
       //   html =
       //     html +
@@ -390,6 +390,19 @@ export default {
   flex-flow: row nowrap;
   align-items: flex-start;
   margin-top: 10px;
+
+  /deep/ .in-text__banners {
+    position: relative;
+
+    .aImage::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
 }
 
 .article {
