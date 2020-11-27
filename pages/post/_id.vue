@@ -132,14 +132,6 @@ export default {
           content: this.article.title
         },
         {
-          property: 'og:image:width',
-          content: '1200',
-        },
-        {
-          property: 'og:image:height',
-          content: '620',
-        },
-        {
           hid: "ogurl",
           property: "og:url",
           content: "https://medach.pro" + this.$route.path
@@ -164,12 +156,12 @@ export default {
         {
           hid: "ogimagewidth",
           property: "og:image:width",
-          content: "675"
+          content: "1200"
         },
         {
           hid: "ogimageheight",
           property: "og:image:height",
-          content: "475"
+          content: "628"
         },
         {
           hid: "ogdescription",
