@@ -133,11 +133,10 @@ export default {
   padding: 10px 17px 14px 20px;
 }
 .contents {
-  position: absolute;
   z-index: 13;
   left: 55px;
   z-index: 2;
-  top: 88px;
+  top: 100px;
 
   width: 320px;
   max-height: calc(100vh - 108px);
@@ -151,7 +150,7 @@ export default {
 }
 
 .contents.stycky {
-  position: fixed;
+  position: sticky;
   top: 20px;
 }
 
@@ -326,10 +325,12 @@ export default {
 }
 
 @media (max-width: 1024px) {
+  .ul-content__wrapper {
+    padding: 10px 10px 14px 28px;
+  }
   .contents {
     top: 0 !important;
     left: 0 !important;
-    z-index: 13;
     border: 0;
     border-radius: 0;
 

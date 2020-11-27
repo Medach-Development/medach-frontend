@@ -13,6 +13,11 @@ module.exports = {
         hid: 'ogimage',
         property: 'og:image',
         content: 'https://medach.pro/android-chrome-512x512.png'
+      },
+      {
+        property: "tg:site_verification",
+        // g7j8/rPFXfhyrq5q0QQV7EsYWv4="
+        content: ""
       }
     ],
     link: [

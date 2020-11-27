@@ -221,6 +221,9 @@ h1 {
 }
 
 @media(max-width: 1024px) {
+  body {
+    overflow-x: hidden;
+  }
   .wrapper-layout {
     padding-top: 45px;
   }

@@ -1,68 +1,68 @@
 <template lang="pug">
 .wrapper(:class="{'is-contents': true}")
   scroll-top
-  article.container.article-container
-    h1.title
-      | {{article.title}}
-    .tags
-      nuxt-link.tag(v-for="tag in article.tags" :key="`${article.id}-${tag}`" :to="`/search?query=${tag}`")
-        | {{ tag }}
+  .container
+    .inner
+      article.article-container
+        h1.title
+          | {{article.title}}
+        .tags
+          nuxt-link.tag(v-for="tag in article.tags" :key="`${article.id}-${tag}`" :to="`/search?query=${tag}`")
+            | {{ tag }}
 
-    .info
-      .info-item.origin(v-if="article.origin && article.origin !== ''")
-        a(:href="article.origin" target="_blank")
-          | Оригинал
-      .info-item(v-if="article.author")
-        span
-          | Автор: {{article.author}}
-        br
-        nuxt-link(v-if="bloggerId && !isAdmin" :to="`/profile/${bloggerId}`" class="link-blogger")
-          | {{ bloggerFirstName || bloggerLastName }}
-      .info-item(v-if="article.translate && article.translate !== ''")
-        span Перевод: {{article.translate}}
-      .info-item(v-if="article.redaction")
-        span Редакция: {{article.redaction}}
-      .info-item(v-if="article.infographic")
-        span Оформление: {{article.infographic}}
-      .info-item(v-if="article.createdAt")
-        span Публикация: {{publishDate}}
-      .info-item(v-if="article.updatedAt")
-        span Последнее обновление: {{updateDate}}
+        .info
+          .info-item.origin(v-if="article.origin && article.origin !== ''")
+            a(:href="article.origin" target="_blank")
+              | Оригинал
+          .info-item(v-if="article.author")
+            span
+              | Автор: {{article.author}}
+            br
+            nuxt-link(v-if="bloggerId && !isAdmin" :to="`/profile/${bloggerId}`" class="link-blogger")
+              | {{ bloggerFirstName || bloggerLastName }}
+          .info-item(v-if="article.translate && article.translate !== ''")
+            span Перевод: {{article.translate}}
+          .info-item(v-if="article.redaction")
+            span Редакция: {{article.redaction}}
+          .info-item(v-if="article.infographic")
+            span Оформление: {{article.infographic}}
+          .info-item(v-if="article.createdAt")
+            span Публикация: {{publishDate}}
+        .article-wrapper
+          .article.content-article-wrapper(v-html="articleBody" ref="articleData")
 
-    .contents-wrapper(:class="isContentsMenuOpen ? 'open' : null")
-      button.toggle-contents(@click="toggleContents")
-      TheArticleContents(:contents="contents")
-    .article-wrapper
-      .article.content-article-wrapper(v-html="articleBody" ref="articleData")
+          //- .promo.desktop
+          //-   GoogleAd(adSlot="2334561718" styles="display: block; min-height: 600px; max-width: 300px; width: 100%;")
+          //- .promo.mobile
+          //-   GoogleAd(adSlot="2334561718" styles="display: block; height: 250px; width: 300px;")
+        .report-error
+          | Нашли опечатку? Выделите фрагмент и нажмите Ctrl+Enter.
 
-      //- .promo.desktop
-      //-   GoogleAd(adSlot="2334561718" styles="display: block; min-height: 600px; max-width: 300px; width: 100%;")
-      //- .promo.mobile
-      //-   GoogleAd(adSlot="2334561718" styles="display: block; height: 250px; width: 300px;")
-    .report-error
-      | Нашли опечатку? Выделите фрагмент и нажмите Ctrl+Enter.
+        .donation-form
+          iframe(src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20Medical%20Channel&targets-hint=&default-sum=10&button-text=14&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011557441721" width="100%" height="222" frameborder="0" allowtransparency="true" scrolling="no")
+        preview(v-if="currentImg" :close="closeImg" :currentImg="currentImg")
 
-    .donation-form
-      iframe(src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20Medical%20Channel&targets-hint=&default-sum=10&button-text=14&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011557441721" width="100%" height="222" frameborder="0" allowtransparency="true" scrolling="no")
-    preview(v-if="currentImg" :close="closeImg" :currentImg="currentImg")
+      .contents-wrapper(:class="isContentsMenuOpen ? 'open' : null")
+        button.toggle-contents(@click="toggleContents")
+        TheArticleContents(:contents="contents")
 
-  .interested-wrapper.container
-    interested-articles(:articles="interested")
-  transition(name="fade")
-    popup(
-      v-if="openPopup===true"
-      type="mistake"
-      :popupVisible="popupVisible"
-      :thanksForComment="thanksForComment"
-      :text="mistakeText"
-    )
+    .interested-wrapper.container
+      interested-articles(:articles="interested")
+    transition(name="fade")
+      popup(
+        v-if="openPopup===true"
+        type="mistake"
+        :popupVisible="popupVisible"
+        :thanksForComment="thanksForComment"
+        :text="mistakeText"
+      )
 
-  transition(name="fade")
-    .thanks(v-if="openThanks===true")
-      .thanks-text
-        | Спасибо.
-      .thanks-text
-        | Опечатка отправлена нашим редакторам
+    transition(name="fade")
+      .thanks(v-if="openThanks===true")
+        .thanks-text
+          | Спасибо.
+        .thanks-text
+          | Опечатка отправлена нашим редакторам
 </template>
 
 <script>
@@ -332,13 +332,12 @@ export default {
   padding-bottom: 40px;
 
   .container {
-    padding-left: 80px;
+    margin: 0 auto;
   }
 }
 
 .is-contents .article-container {
-  padding-left: 400px;
-  margin: 0 auto 0 0;
+  padding-right: 40px;
 }
 
 .title {
@@ -381,6 +380,10 @@ export default {
   }
 }
 
+.inner {
+  display: flex;
+}
+
 .article-wrapper {
   display: flex;
   flex-flow: row nowrap;
@@ -413,9 +416,9 @@ export default {
 }
 
 .contents-wrapper {
-  position: fixed;
+  position: sticky;
   left: 0;
-  top: 0;
+  top: 105px;
   height: 100%;
   z-index: 12;
 }
@@ -438,8 +441,15 @@ export default {
     width: 280px;
     height: 100%;
     z-index: 12;
+    max-height: calc(100vh - 45px);
+    overflow-y: auto;
+    position: fixed;
+    right: 0;
+    top: 45px;
+    left: initial;
 
-    transform: translateX(-100%);
+
+    transform: translateX(95%);
 
     transition: transform 0.3s linear;
   }
@@ -474,8 +484,8 @@ export default {
     position: absolute;
     z-index: 12;
     top: 50%;
-    left: 100%;
-    transform: translateY(-50%);
+    left: 0;
+    transform: translateY(-50%) rotate(180deg);
 
     display: block;
     width: 24px;
