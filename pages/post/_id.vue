@@ -1,5 +1,5 @@
 <template lang="pug">
-.wrapper(:class="{'is-contents': contents.length !== 0 || leftBanners.length !== 0}" )
+.wrapper(:class="{'is-contents': true}")
   scroll-top
   article.container.article-container
     h1.title
@@ -19,20 +19,15 @@
         nuxt-link(v-if="bloggerId && !isAdmin" :to="`/profile/${bloggerId}`" class="link-blogger")
           | {{ bloggerFirstName || bloggerLastName }}
       .info-item(v-if="article.translate && article.translate !== ''")
-        span
-         | Перевод: {{article.translate}}
+        span Перевод: {{article.translate}}
       .info-item(v-if="article.redaction")
-        span
-         | Редакция: {{article.redaction}}
+        span Редакция: {{article.redaction}}
       .info-item(v-if="article.infographic")
-        span
-         | Оформление: {{article.infographic}}
+        span Оформление: {{article.infographic}}
       .info-item(v-if="article.createdAt")
-        span
-         | Публикация: {{publishDate}}
+        span Публикация: {{publishDate}}
       .info-item(v-if="article.updatedAt")
-        span
-         | Последнее обновление: {{updateDate}} 
+        span Последнее обновление: {{updateDate}}
 
     .contents-wrapper(:class="isContentsMenuOpen ? 'open' : null")
       button.toggle-contents(@click="toggleContents")

@@ -8,19 +8,19 @@ header.header
     .right
       nav.categories(:class="{visible: isOpen}" ref="categories")
         .category
-          nuxt-link.category-name(to="/categories/cases") Кейсы
+          nuxt-link.category-name(to="/categories/news") Новости
         .category
-          nuxt-link.category-name(to="/categories/guides") Руководства
-        .category
-          nuxt-link.category-name(to="/categories/longread") Cтатьи
+          nuxt-link.category-name(to="/categories/longread") Статьи
         .category
           nuxt-link.category-name(to="/categories/translated") Переводы
         .category
           nuxt-link.category-name(to="/categories/media") Медиа
         .category
+          nuxt-link.category-name(to="/categories/guides") Руководства
+        .category
           nuxt-link.category-name(to="/categories/blogs") Блоги
         .category
-          nuxt-link.category-name(to="/categories/news") Новости
+          nuxt-link.category-name(to="/categories/cases") Кейсы
         .category
           nuxt-link.category-name(to="/vacancies") Вакансии
         .caret(ref="caret")
