@@ -1,10 +1,9 @@
 <template lang="pug">
-  //- v-if="isBrowser && (contents.length > 0 || bannersLeft.length > 0)"
   div(
     :class="{'contents': true, 'stycky': isSticky}"
     :style="{'top': `${stickyPosition}`}"
     ref="contents"
-    v-if="isBrowser"
+    v-if="isBrowser && (contents.length > 0 || bannersLeft.length > 0)"
     )
     nav.ul-content__wrapper(:class="{ 'hide-wrap': !contents.length}")
       ul
@@ -12,15 +11,12 @@
           | {{ content.textContent }}
     .banners-wrapper__left-wrapper
       .banners-wrapper__left
-        //- template(v-for = "banner in bannersLeft")
-        //-   a.banner-wrapper(:href="banner.url" target="_blank") 
-        //-     .banner-img(:style="{ background: `url(${BASE_URL}${banner.image.url}) no-repeat center / cover`}")
-        //-     .banner-text
-        //-       .banner-title {{banner.title}}
-        //-       .banner-description {{banner.description}}
-
-        a.banner-wrapper(href="https://pcr.news/webinars/ippp/" target="_blank")
-          img.banner-img(src="~static/banner_1.jpg")
+        template(v-for = "banner in bannersLeft")
+          a.banner-wrapper(:href="banner.url" target="_blank") 
+            .banner-img(:style="{ background: `url(${BASE_URL}${banner.image.url}) no-repeat center / cover`}")
+            .banner-text
+              .banner-title {{banner.title}}
+              .banner-description {{banner.description}}
 
 </template>
 
