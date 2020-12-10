@@ -184,19 +184,19 @@ export default {
       bannersInText: "articlePage/inTextBanners",
     }),
     inTextBanners() {
-      let html = "<div class='in-text__banners'>"
-      this.bannersInText.forEach(elem => {
-        html =
-          html +
-          `<a href='${elem.url}' target="_blank" >
-            <div class="banner-inText__wrapper" style="background: url(${this.BASE_URL}${elem.image.url}) no-repeat center / cover">
-              <div class="banner-inText__text">
-                <div class="banner-inText__title">${elem.title}</div>
-                <div class="banner-inText__description">${elem.description}</div>
-              </div>
-            </div>
-          </a>`;
-      });
+      let html = `<div class='in-text__banners'> <a class="aImage" href="https://sale.medsyst.ru/" target="_blank"></a> <img class="disablePreview" src="/left_banner.png" />`
+      // this.bannersInText.forEach(elem => {
+      //   html =
+      //     html +
+      //     `<a href='${elem.url}' target="_blank" >
+      //       <div class="banner-inText__wrapper" style="background: url(${this.BASE_URL}${elem.image.url}) no-repeat center / cover">
+      //         <div class="banner-inText__text">
+      //           <div class="banner-inText__title">${elem.title}</div>
+      //           <div class="banner-inText__description">${elem.description}</div>
+      //         </div>
+      //       </div>
+      //     </a>`;
+      // });
       return html + "</div>";
     },
     articleBody() {
@@ -399,6 +399,7 @@ export default {
 
   /deep/ .in-text__banners {
     position: relative;
+    margin-top: 20px;
 
     .aImage::before {
       content: '';
