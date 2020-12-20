@@ -1,35 +1,45 @@
 <template lang="pug">
-.wrapper(:class="{'is-contents': true}")
+.wrapper(:class="{ 'is-contents': true }")
   scroll-top
   .container
     .inner
       article.article-container
         h1.title
-          | {{article.title}}
+          | {{ article.title }}
         .tags
-          nuxt-link.tag(v-for="tag in article.tags" :key="`${article.id}-${tag}`" :to="`/search?query=${tag}`")
+          nuxt-link.tag(
+            v-for="tag in article.tags",
+            :key="`${article.id}-${tag}`",
+            :to="`/search?query=${tag}`"
+          )
             | {{ tag }}
 
         .info
           .info-item.origin(v-if="article.origin && article.origin !== ''")
-            a(:href="article.origin" target="_blank")
+            a(:href="article.origin", target="_blank")
               | Оригинал
           .info-item(v-if="article.author")
             span
-              | Автор: {{article.author}}
+              | Автор: {{ article.author }}
             br
-            nuxt-link(v-if="bloggerId && !isAdmin" :to="`/profile/${bloggerId}`" class="link-blogger")
+            nuxt-link.link-blogger(
+              v-if="bloggerId && !isAdmin",
+              :to="`/profile/${bloggerId}`"
+            )
               | {{ bloggerFirstName || bloggerLastName }}
           .info-item(v-if="article.translate && article.translate !== ''")
-            span Перевод: {{article.translate}}
+            span Перевод: {{ article.translate }}
           .info-item(v-if="article.redaction")
-            span Редакция: {{article.redaction}}
+            span Редакция: {{ article.redaction }}
           .info-item(v-if="article.infographic")
-            span Оформление: {{article.infographic}}
+            span Оформление: {{ article.infographic }}
           .info-item(v-if="article.createdAt")
-            span Публикация: {{publishDate}}
+            span Публикация: {{ publishDate }}
         .article-wrapper
-          .article.content-article-wrapper(v-html="articleBody" ref="articleData")
+          .article.content-article-wrapper(
+            v-html="articleBody",
+            ref="articleData"
+          )
 
           //- .promo.desktop
           //-   GoogleAd(adSlot="2334561718" styles="display: block; min-height: 600px; max-width: 300px; width: 100%;")
@@ -39,8 +49,15 @@
           | Нашли опечатку? Выделите фрагмент и нажмите Ctrl+Enter.
 
         .donation-form
-          iframe(src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20Medical%20Channel&targets-hint=&default-sum=10&button-text=14&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011557441721" width="100%" height="222" frameborder="0" allowtransparency="true" scrolling="no")
-        preview(v-if="currentImg" :close="closeImg" :currentImg="currentImg")
+          iframe(
+            src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20Medical%20Channel&targets-hint=&default-sum=10&button-text=14&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011557441721",
+            width="100%",
+            height="222",
+            frameborder="0",
+            allowtransparency="true",
+            scrolling="no"
+          )
+        preview(v-if="currentImg", :close="closeImg", :currentImg="currentImg")
 
       .contents-wrapper(:class="isContentsMenuOpen ? 'open' : null")
         button.toggle-contents(@click="toggleContents")
@@ -50,15 +67,15 @@
       interested-articles(:articles="interested")
     transition(name="fade")
       popup(
-        v-if="openPopup===true"
-        type="mistake"
-        :popupVisible="popupVisible"
-        :thanksForComment="thanksForComment"
+        v-if="openPopup === true",
+        type="mistake",
+        :popupVisible="popupVisible",
+        :thanksForComment="thanksForComment",
         :text="mistakeText"
       )
 
     transition(name="fade")
-      .thanks(v-if="openThanks===true")
+      .thanks(v-if="openThanks === true")
         .thanks-text
           | Спасибо.
         .thanks-text
@@ -73,11 +90,11 @@ import Preview from "~/components/Preview";
 import ScrollTop from "~/components/ScrollTop";
 import TheArticleContents from "~/components/TheArticleContents";
 import Popup from "~/components/popups/Popup";
-import { parse } from 'node-html-parser';
+import { parse } from "node-html-parser";
 
 import { get, maxBy } from "lodash";
 import { mapGetters } from "vuex";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 export default {
   name: "ArticlesPage",
@@ -88,12 +105,12 @@ export default {
     Preview,
     ScrollTop,
     TheArticleContents,
-    Popup
+    Popup,
   },
 
   async fetch({ store, params, redirect }) {
     const article = await store.dispatch("articlePage/fetchArticle", {
-      id: params.id
+      id: params.id,
     });
     if (article.hidden) {
       redirect("/");
@@ -110,70 +127,70 @@ export default {
       openThanks: false,
       contents: [],
       isContents: true,
-      isContentsMenuOpen: false
+      isContentsMenuOpen: false,
     };
   },
   head() {
-    const description = this.getDescription()
+    const description = this.getDescription();
     return {
       htmlAttrs: {
-        prefix: "og: http://ogp.me/ns#"
+        prefix: "og: http://ogp.me/ns#",
       },
-      title: this.article.title, 
+      title: this.article.title,
       meta: [
         {
           hid: "description",
-          property: 'description',
+          property: "description",
           content: description,
         },
         {
           hid: "ogtitle",
           property: "og:title",
-          content: this.article.title
+          content: this.article.title,
         },
         {
           hid: "ogurl",
           property: "og:url",
-          content: "https://medach.pro" + this.$route.path
+          content: "https://medach.pro" + this.$route.path,
         },
         {
           hid: "ogtype",
           property: "og:type",
-          content: "article"
+          content: "article",
         },
         {
           hid: "ogimage",
           property: "og:image",
           content: this.article.coverImage.url
             ? this.BASE_URL + this.article.coverImage.url
-            : ""
+            : "",
         },
         {
-          hid: 'twittercard',
+          hid: "twittercard",
           property: "twitter:card",
-          content: 'summary_large_image',
+          content: "summary_large_image",
         },
         {
           hid: "ogimagetype",
           property: "og:image:type",
-          content: "image/jpeg"
+          content: "image/jpeg",
         },
         {
           hid: "ogimagewidth",
           property: "og:image:width",
-          content: "1200"
+          content: "1200",
         },
         {
           hid: "ogimageheight",
           property: "og:image:height",
-          content: "630"
+          content: "630",
         },
         {
           hid: "ogdescription",
           property: "og:description",
           content: description,
-        }
-      ]
+        },
+      ],
     };
   },
 
@@ -184,19 +201,20 @@ export default {
       bannersInText: "articlePage/inTextBanners",
     }),
     inTextBanners() {
-      let html = `<div class='in-text__banners'> <a class="aImage" href="https://sale.medsyst.ru/" target="_blank"></a> <img class="disablePreview" src="/left_banner.png" />`
-      // this.bannersInText.forEach(elem => {
-      //   html =
-      //     html +
-      //     `<a href='${elem.url}' target="_blank" >
-      //       <div class="banner-inText__wrapper" style="background: url(${this.BASE_URL}${elem.image.url}) no-repeat center / cover">
-      //         <div class="banner-inText__text">
-      //           <div class="banner-inText__title">${elem.title}</div>
-      //           <div class="banner-inText__description">${elem.description}</div>
-      //         </div>
-      //       </div>
-      //     </a>`;
-      // });
+      let html = `<div class="in-text__banners">`;
+      // let html = `<div class='in-text__banners'> <a class="aImage" href="https://sale.medsyst.ru/" target="_blank"></a> <img class="disablePreview" src="/left_banner.png" />`
+      this.bannersInText.forEach((elem) => {
+        html =
+          html +
+          `<a href='${elem.url}' target="_blank" >
+            <div class="banner-inText__wrapper" style="background: url(${this.BASE_URL}${elem.image.url}) no-repeat center / cover">
+              <div class="banner-inText__text">
+                <div class="banner-inText__title">${elem.title}</div>
+                <div class="banner-inText__description">${elem.description}</div>
+              </div>
+            </div>
+          </a>`;
+      });
       return html + "</div>";
     },
     articleBody() {
@@ -219,20 +237,20 @@ export default {
       return get(this, "article.user.last_name", null);
     },
     publishDate() {
-      return format(this.article.createdAt, 'DD.MM.YYYY')
+      return format(this.article.createdAt, "DD.MM.YYYY");
     },
     updateDate() {
-      return format(this.article.updatedAt, 'DD.MM.YYYY')
+      return format(this.article.updatedAt, "DD.MM.YYYY");
     },
     leftBanners() {
-      return this.article.banners.filter(elem => elem.position === "left")
-    }
+      return this.article.banners.filter((elem) => elem.position === "left");
+    },
   },
 
   mounted() {
     const images = Array.from(this.$refs.articleData.querySelectorAll("img"));
-    images.map(img => {
-      if (!img.classList.contains('disablePreview')) {
+    images.map((img) => {
+      if (!img.classList.contains("disablePreview")) {
         img.addEventListener("click", () => this.renderPreviewImage(img));
       }
     });
@@ -248,7 +266,7 @@ export default {
 
   beforeDestroy() {
     const images = Array.from(this.$refs.articleData.querySelectorAll("img"));
-    images.map(img => {
+    images.map((img) => {
       img.removeEventListener("click", () => this.renderPreviewImage(img));
     });
 
@@ -257,17 +275,21 @@ export default {
 
   methods: {
     getDescription() {
-      if (!this.article) return
-      const contentHTML = parse(this.article.body)
-      return contentHTML.text.split('.').filter((_, i) => i < 4).join('.').replace(/\r?\n|\r/g, "")
+      if (!this.article) return;
+      const contentHTML = parse(this.article.body);
+      return contentHTML.text
+        .split(".")
+        .filter((_, i) => i < 4)
+        .join(".")
+        .replace(/\r?\n|\r/g, "");
     },
     insertAd(content, adHtml) {
       const tagsForSplitting = ["</div>", "</p>", "<br>"];
-      const splittedContent = tagsForSplitting.map(tag => ({
+      const splittedContent = tagsForSplitting.map((tag) => ({
         tag,
-        content: content.split(tag)
+        content: content.split(tag),
       }));
-      const result = maxBy(splittedContent, el => {
+      const result = maxBy(splittedContent, (el) => {
         return el.content.length;
       });
 
@@ -311,8 +333,8 @@ export default {
 
     toggleContents() {
       this.isContentsMenuOpen = !this.isContentsMenuOpen;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -402,7 +424,7 @@ export default {
     margin-top: 20px;
 
     .aImage::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -468,7 +490,6 @@ export default {
     right: 0;
     top: 45px;
     left: initial;
-
 
     transform: translateX(95%);
 
@@ -574,7 +595,7 @@ export default {
     padding-left: 30px;
   }
 
-    .promo {
+  .promo {
     &.desktop {
       display: none;
     }
