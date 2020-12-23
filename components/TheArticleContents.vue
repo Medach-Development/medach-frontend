@@ -1,23 +1,28 @@
 <template lang="pug">
-  div(
-    :class="{'contents': true, 'stycky': isSticky}"
-    :style="{'top': `${stickyPosition}`}"
-    ref="contents"
-    v-if="isBrowser && (contents.length > 0 || bannersLeft.length > 0)"
-    )
-    nav.ul-content__wrapper(:class="{ 'hide-wrap': !contents.length}")
-      ul
-        li(v-for="(content, index) in contents" @click="scrollTo(content)" :class="getClass(content, index)")
-          | {{ content.textContent }}
-    .banners-wrapper__left-wrapper
-      .banners-wrapper__left
-        template(v-for = "banner in bannersLeft")
-          a.banner-wrapper(:href="banner.url" target="_blank") 
-            .banner-img(:style="{ background: `url(${BASE_URL}${banner.image.url}) no-repeat center / cover`}")
-            .banner-text
-              .banner-title {{banner.title}}
-              .banner-description {{banner.description}}
-
+div(
+  :class="{ contents: true, stycky: isSticky }",
+  :style="{ top: `${stickyPosition}` }",
+  ref="contents",
+  v-if="isBrowser && (contents.length > 0 || bannersLeft.length > 0)"
+)
+  nav.ul-content__wrapper(:class="{ 'hide-wrap': !contents.length }")
+    ul
+      li(
+        v-for="(content, index) in contents",
+        @click="scrollTo(content)",
+        :class="getClass(content, index)"
+      )
+        | {{ content.textContent }}
+  .banners-wrapper__left-wrapper
+    .banners-wrapper__left
+      template(v-for="banner in bannersLeft")
+        a.banner-wrapper(:href="banner.url", target="_blank") 
+          .banner-img(
+            :style="{ background: `url(${BASE_URL}${banner.image.url}) no-repeat center / cover` }"
+          )
+          .banner-text
+            .banner-title {{ banner.title }}
+            .banner-description {{ banner.description }}
 </template>
 
 <script>
@@ -26,7 +31,7 @@ import { mapGetters } from "vuex";
 
 export default {
   props: {
-    contents: Array
+    contents: Array,
   },
 
   data() {
@@ -39,7 +44,7 @@ export default {
       footerHeight: null,
       contentIndex: null,
       contentsPositions: null,
-      scrollToOffset: 0
+      scrollToOffset: 0,
     };
   },
 
@@ -58,7 +63,7 @@ export default {
         this.stickyPosition = this.headerBottomPosition;
 
         this.contentsPositions = this.contents.map(
-          el =>
+          (el) =>
             Number(el.getBoundingClientRect().top) +
             pageYOffset -
             this.scrollToOffset
@@ -75,8 +80,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      bannersLeft: "articlePage/leftBanners"
-    })
+      bannersLeft: "articlePage/leftBanners",
+    }),
   },
 
   methods: {
@@ -84,14 +89,14 @@ export default {
       return {
         h1: el.tagName.toLowerCase() === "h1",
         h2: el.tagName.toLowerCase() === "h2",
-        active: Number(index) === this.contentIndex
+        active: Number(index) === this.contentIndex,
       };
     },
 
     scrollTo(node) {
       VueScrollTo.scrollTo(node, 1000, {
         easing: "easeInOutQuart",
-        offset: -this.scrollToOffset
+        offset: -this.scrollToOffset,
       });
     },
 
@@ -102,13 +107,13 @@ export default {
         pageYOffset <= this.footerTopPosition
       ) {
         this.isSticky = true;
-        this.stickyPosition = this.headerBottomPosition + 'px';
+        this.stickyPosition = this.headerBottomPosition + "px";
       } else if (pageYOffset <= this.headerBottomPosition) {
         this.isSticky = false;
-        this.stickyPosition = this.headerBottomPosition  + 'px';
-      } else if (pageYOffset >= this.footerTopPosition ) {
+        this.stickyPosition = this.headerBottomPosition + "px";
+      } else if (pageYOffset >= this.footerTopPosition) {
         this.isSticky = false;
-        this.stickyPosition = '-100%';
+        this.stickyPosition = "-100%";
       }
 
       // active contents
@@ -119,8 +124,8 @@ export default {
           this.contentIndex = null;
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -219,7 +224,6 @@ export default {
   border-radius: 4px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
 }
 
 .banner-intext__img {

@@ -93,7 +93,7 @@ import Popup from "~/components/popups/Popup";
 import { parse } from "node-html-parser";
 
 import { get, maxBy } from "lodash";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { format } from "date-fns";
 
 export default {
@@ -109,6 +109,7 @@ export default {
   },
 
   async fetch({ store, params, redirect }) {
+    await store.dispatch("articlePage/fetchDefaultBanners");
     const article = await store.dispatch("articlePage/fetchArticle", {
       id: params.id,
     });
@@ -202,7 +203,6 @@ export default {
     }),
     inTextBanners() {
       let html = `<div class="in-text__banners">`;
-      // let html = `<div class='in-text__banners'> <a class="aImage" href="https://sale.medsyst.ru/" target="_blank"></a> <img class="disablePreview" src="/left_banner.png" />`
       this.bannersInText.forEach((elem) => {
         html =
           html +
@@ -274,6 +274,9 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      fetchDefaultBanners: "articlePage/fetchDefaultBanners",
+    }),
     getDescription() {
       if (!this.article) return;
       const contentHTML = parse(this.article.body);
