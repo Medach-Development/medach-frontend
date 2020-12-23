@@ -42,7 +42,6 @@ export const actions = {
   },
 
   async fetchDefaultBanners({ commit }) {
-    console.log("fetch banners");
     const data = await getLongreadPost(2505);
     if (data && data.banners) commit("setDefaultBanners", data.banners);
   }

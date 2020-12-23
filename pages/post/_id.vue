@@ -203,17 +203,11 @@ export default {
     }),
     inTextBanners() {
       let html = `<div class="in-text__banners">`;
+      // let html = `<div class='in-text__banners'> <a class="aImage" href="https://sale.medsyst.ru/" target="_blank"></a> <img class="disablePreview" src="/left_banner.png" />`
       this.bannersInText.forEach((elem) => {
         html =
           html +
-          `<a href='${elem.url}' target="_blank" >
-            <div class="banner-inText__wrapper" style="background: url(${this.BASE_URL}${elem.image.url}) no-repeat center / cover">
-              <div class="banner-inText__text">
-                <div class="banner-inText__title">${elem.title}</div>
-                <div class="banner-inText__description">${elem.description}</div>
-              </div>
-            </div>
-          </a>`;
+          `<div><a class="aImage" href="${elem.url}" target="_blank"></a> <img class="disablePreview" src="${this.BASE_URL}${elem.image.url}" /></div>`;
       });
       return html + "</div>";
     },
