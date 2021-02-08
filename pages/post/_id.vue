@@ -366,6 +366,13 @@ export default {
   padding-right: 40px;
 }
 
+@media (max-width: 450px) {
+  .is-contents .article-container {
+    padding-right: 0;
+    width: 100%;
+  }
+}
+
 .title {
   font-family: "PTSerif", serif;
   font-size: 40px;
@@ -435,6 +442,7 @@ export default {
   font-family: "PTSerif", serif;
   max-width: 800px;
   width: 100%;
+  overflow-wrap: break-word;
 }
 
 .promo {
