@@ -277,7 +277,6 @@ export default {
 
 .banner-wrapper {
   position: relative;
-  margin-top: 20px;
   width: 100%;
   height: 100%;
 }
