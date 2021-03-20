@@ -294,7 +294,7 @@ export default {
 }
 .banner-img {
   width: 100%;
-  min-height: 160px;
+  min-height: 180px;
   border-radius: 4px;
   padding: 0 5px;
 }
