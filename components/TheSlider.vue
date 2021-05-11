@@ -52,15 +52,22 @@ export default {
     },
 
     getSlideImageUrl(slide) {
-      if (!slide) return ''
+      if (!slide) {
+        return ''
+      }
       else if (slide.sliderImage && slide.sliderImage.url) {
         return slide.sliderImage.url
-      } else if (slide.coverImage) {
-        return slide.coverImage.url
       } else {
-        return '';
+        return slide.coverImage.url || ''
       }
     }
+    // LODASH PODVODIT VOT TUT VOT
+    // getSlideImageUrl(slide) {
+    //   console.log("SLIDE EXPECTED", slide.sliderImage.url)
+    //   console.log("RESULT", _.get(slide, slide.sliderImage.url, slide.coverImage.url))
+    //   console.log("__________________________________________________________________")
+    //   return _.get(slide, slide.sliderImage.url, slide.coverImage.url)
+    // }
   }
 }
 </script>
