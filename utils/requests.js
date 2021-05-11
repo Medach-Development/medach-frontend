@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  // baseURL: "https://medach.pro",
-  baseURL: 'http://localhost:3000',
+  baseURL: "https://medach.pro",
+  // baseURL: 'http://localhost:3000',
   timeout: 50000,
   headers: {},
   withCredentials: false
