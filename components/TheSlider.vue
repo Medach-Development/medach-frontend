@@ -52,7 +52,14 @@ export default {
     },
 
     getSlideImageUrl(slide) {
-      return _.get(slide, slide.sliderImage.url, slide.coverImage.url)
+      if (!slide) return ''
+      else if (slide.sliderImage && slide.sliderImage.url) {
+        return slide.sliderImage.url
+      } else if (slide.coverImage) {
+        return slide.coverImage.url
+      } else {
+        return '';
+      }
     }
   }
 }
