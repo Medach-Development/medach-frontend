@@ -3,7 +3,8 @@ import { getLongreadPost } from "~/utils/requests";
 export const state = () => ({
   article: {},
   defaultLeftBanners: [],
-  defaultTextBanners: []
+  defaultTextBanners: [],
+  defaultBannersLoaded: false
 });
 
 export const mutations = {
@@ -15,6 +16,7 @@ export const mutations = {
     state.defaultTextBanners = banners.filter(
       elem => elem.position === "in_text"
     );
+    state.defaultBannersLoaded = true;
   }
 };
 
@@ -31,7 +33,11 @@ export const getters = {
       elem => elem.position === "in_text"
     );
     return inTextBanners.length > 0 ? inTextBanners : state.defaultTextBanners;
-  }
+  },
+  hasDefaultBanners: state => (
+    state.defaultLeftBanners.length ||
+    state.defaultTextBanners
+  ) && state.defaultBannersLoaded
 };
 
 export const actions = {
@@ -41,7 +47,9 @@ export const actions = {
     return data;
   },
 
-  async fetchDefaultBanners({ commit }) {
+  async fetchDefaultBanners({ commit, getters }) {
+    if (getters.hasDefaultBanners) return;
+
     const data = await getLongreadPost(2505);
     if (data && data.banners) commit("setDefaultBanners", data.banners);
   }
