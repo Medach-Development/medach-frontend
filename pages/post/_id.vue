@@ -109,7 +109,8 @@ export default {
   },
 
   async fetch({ store, params, redirect }) {
-    await store.dispatch("articlePage/fetchDefaultBanners");
+    store.dispatch("articlePage/fetchDefaultBanners");
+
     const article = await store.dispatch("articlePage/fetchArticle", {
       id: params.id,
     });
