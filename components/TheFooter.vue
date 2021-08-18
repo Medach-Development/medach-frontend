@@ -13,6 +13,7 @@ footer.footer
         a.social.social-facebook(href="https://www.facebook.com/medachofficial/" target="_blank")
         a.social.social-telegram(href="https://t.me/medach" target="_blank")
         a.social.social-youtube(href="https://www.youtube.com/channel/UCPbE0ZLynjRd-FziGZQsgsA" target="_blank")
+        a.social.social-instagram(href="https://instagram.com/medachpro" target="_blank")
 
 </template>
 
@@ -35,8 +36,12 @@ export default {
 }
 
 .social-items {
+  z-index: 30;
+  position: fixed;
   display: flex;
   flex-flow: row nowrap;
+  bottom: 20px;
+  right: 20px;
 }
 
 .social {

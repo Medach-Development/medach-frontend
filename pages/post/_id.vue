@@ -47,16 +47,21 @@
           //-   GoogleAd(adSlot="2334561718" styles="display: block; height: 250px; width: 300px;")
         .report-error
           | Нашли опечатку? Выделите фрагмент и нажмите Ctrl+Enter.
+        
+        script(src="https://yastatic.net/share2/share.js")
+        .share-title
+          | Поделиться в соцсетях:
+        .ya-share2(data-curtain data-size="m" data-shape="round" data-services="vkontakte,facebook,odnoklassniki,telegram,twitter")
 
-        .donation-form
-          iframe(
-            src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20Medical%20Channel&targets-hint=&default-sum=10&button-text=14&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011557441721",
-            width="100%",
-            height="222",
-            frameborder="0",
-            allowtransparency="true",
-            scrolling="no"
-          )
+        //- .donation-form
+        //-   iframe(
+        //-     src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20Medach%20channel&targets-hint=&default-sum=100&button-text=11&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011557441721&",
+        //-     width="100%",
+        //-     height="222",
+        //-     frameborder="0",
+        //-     allowtransparency="true",
+        //-     scrolling="no"
+        //-   )
         preview(v-if="currentImg", :close="closeImg", :currentImg="currentImg")
 
       .contents-wrapper(:class="isContentsMenuOpen ? 'open' : null")
@@ -437,6 +442,11 @@ export default {
       right: 0;
     }
   }
+}
+
+.share-title {
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .article {
