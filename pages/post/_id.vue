@@ -48,7 +48,6 @@
         .report-error
           | Нашли опечатку? Выделите фрагмент и нажмите Ctrl+Enter.
         
-        script(src="https://yastatic.net/share2/share.js")
         .share-title
           | Поделиться в соцсетях:
         .ya-share2(data-curtain data-size="m" data-shape="round" data-services="vkontakte,facebook,odnoklassniki,telegram,twitter")
@@ -199,6 +198,14 @@ export default {
         },
       ],
     };
+  },
+
+  created () {
+    if (process.browser) {
+      const script = document.createElement('script');
+      script.setAttribute('src', 'https://yastatic.net/share2/share.js');
+      document.body.appendChild(script);
+    }
   },
 
   computed: {
