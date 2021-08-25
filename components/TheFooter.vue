@@ -14,6 +14,12 @@ footer.footer
         a.social.social-telegram(href="https://t.me/medach" target="_blank")
         a.social.social-youtube(href="https://www.youtube.com/channel/UCPbE0ZLynjRd-FziGZQsgsA" target="_blank")
         a.social.social-instagram(href="https://instagram.com/medachpro" target="_blank")
+      .social-items.social-items--mobile
+        a.social.social-vk(href="https://vk.com/medach" target="_blank")
+        a.social.social-facebook(href="https://www.facebook.com/medachofficial/" target="_blank")
+        a.social.social-telegram(href="https://t.me/medach" target="_blank")
+        a.social.social-youtube(href="https://www.youtube.com/channel/UCPbE0ZLynjRd-FziGZQsgsA" target="_blank")
+        a.social.social-instagram(href="https://instagram.com/medachpro" target="_blank")
 
 </template>
 
@@ -39,9 +45,15 @@ export default {
   z-index: 30;
   position: fixed;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   bottom: 20px;
   right: 20px;
+
+  &--mobile {
+    position: initial;
+    display: none;
+    flex-flow: row nowrap;
+  }
 }
 
 .social {
@@ -70,7 +82,7 @@ export default {
   }
 
   &:not(:first-child) {
-    margin-left: 16px;
+    margin-top: 16px;
   }
 }
 
@@ -126,13 +138,19 @@ export default {
 
   .social-items {
     margin-top: 24px;
+    display: none;
+
+    &--mobile {
+      display: flex;
+    }
   }
 
   .social {
-    width: 24px;
-    height: 24px;
+    width: 49px;
+    height: 49px;
     &:not(:first-child) {
-      margin-left: 8px;
+      margin-top: 0;
+      margin-left: 16px;
     }
   }
 

@@ -49,7 +49,9 @@ export default {
     }
   },
   mounted() {
-    this.calcCaretPos()
+    setTimeout(() => {
+      this.calcCaretPos();
+    }, 100);
   },
   methods: {
     search() {
@@ -68,7 +70,7 @@ export default {
       this.isOpenSearch = false
     },
     async calcCaretPos() {
-      await this.$nextTick()
+      await this.$nextTick();
       const { categories, caret } = this.$refs
       const currentLink = categories.querySelector('.nuxt-link-active')
       if (caret && currentLink) {
@@ -117,6 +119,10 @@ export default {
   .nuxt-link-active {
     color: #7198BA;
   }
+
+  /deep/ .is-visible {
+    opacity: 1;
+  }
 }
 
 .caret {
@@ -125,6 +131,7 @@ export default {
   bottom: 0;
   background: #7198BA;
   left: 0;
+  /* opacity: 0; */
   transition: transform 0.2s ease, width 0.2s ease;
   will-change: width, transform;
 }

@@ -34,8 +34,8 @@
 </template>
 
 <script>
-const ARTICLES_PER_PAGE_LIST = 5
-const ARTICLES_PER_PAGE_GRID = 12
+const ARTICLES_PER_PAGE_LIST = 12
+const ARTICLES_PER_PAGE_GRID = 18
 
 const SEARCH_INTERVAL = 300
 
@@ -60,7 +60,7 @@ export default {
   fetch({store, params}) {
     return store.dispatch('categoryPage/fetchCategory', {
       page: 1,
-      perPage: ARTICLES_PER_PAGE_LIST,
+      perPage: ARTICLES_PER_PAGE_GRID,
       isSortByPopular: false,
       category: params.id
     })
@@ -86,7 +86,7 @@ export default {
   },
   data() {
     return {
-      isList: true,
+      isList: false,
       isPopular: false,
       searchQuery: '',
     }
