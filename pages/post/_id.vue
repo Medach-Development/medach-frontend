@@ -53,6 +53,8 @@
         .ya-share2(data-curtain data-size="m" data-shape="round" data-services="vkontakte,facebook,odnoklassniki,telegram,twitter")
 
         .donation-form(ref="donation")
+          a(href="https://www.patreon.com/bePatron?u=2773178" target="_blank")
+            img.patreon(src="~/assets/images/become-patron.svg")
         preview(v-if="currentImg", :close="closeImg", :currentImg="currentImg")
 
       .contents-wrapper(:class="isContentsMenuOpen ? 'open' : null")
@@ -504,6 +506,16 @@ export default {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
+}
+
+.patreon {
+  max-width: 180px;
+  border-radius: 4px;
+  transition: transform .2s ease;
+
+  &:hover {
+    transform: scale(1.1)
+  }
 }
 
 @media (max-width: 1024px) {
