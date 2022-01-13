@@ -52,15 +52,7 @@
           | Поделиться в соцсетях:
         .ya-share2(data-curtain data-size="m" data-shape="round" data-services="vkontakte,facebook,odnoklassniki,telegram,twitter")
 
-        .donation-form
-          iframe(
-            src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20Medach%20channel&targets-hint=&default-sum=100&button-text=11&payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011557441721&",
-            width="100%",
-            height="222",
-            frameborder="0",
-            allowtransparency="true",
-            scrolling="no"
-          )
+        .donation-form(ref="donation")
         preview(v-if="currentImg", :close="closeImg", :currentImg="currentImg")
 
       .contents-wrapper(:class="isContentsMenuOpen ? 'open' : null")
@@ -205,6 +197,10 @@ export default {
       const script = document.createElement('script');
       script.setAttribute('src', 'https://yastatic.net/share2/share.js');
       document.body.appendChild(script);
+
+      // const patreon = document.createElement('script');
+      // patreon.setAttribute('src', 'https://c6.patreon.com/becomePatronButton.bundle.js');
+      // document.body.appendChild(patreon);
     }
   },
 
@@ -269,6 +265,14 @@ export default {
         this.$refs.articleData.querySelectorAll("h1, h2")
       );
     }
+
+    // if (process.browser) {
+    //   const button = document.createElement('a');
+    //   button.setAttribute('href', 'https://www.patreon.com/bePatron?u=2773178');
+    //   button.setAttribute('data-patreon-widget-type', 'become-patron-button');
+    //   button.innerText = 'Become a patron!'
+    //   this.$refs.donation.appendChild(button);
+    // }
   },
 
   beforeDestroy() {
