@@ -213,6 +213,8 @@ export default {
       bannersInText: "articlePage/inTextBanners",
     }),
     inTextBanners() {
+      if (!this.bannersInText.length) return;
+
       let html = `<div class="in-text__banners">`;
       // let html = `<div class='in-text__banners'> <a class="aImage" href="https://sale.medsyst.ru/" target="_blank"></a> <img class="disablePreview" src="/left_banner.png" />`
       this.bannersInText.forEach((elem) => {
